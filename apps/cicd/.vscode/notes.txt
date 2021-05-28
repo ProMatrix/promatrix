@@ -1,0 +1,25 @@
+Project Notes:
+This project is for the Angular.Studio.11 extension
+The extension uses a WebView built in Angular
+
+You can debug the WebView stand alone or within the extension framework
+For stand alone (regular angular web app). This will allow you to debug the WebView Extension,
+but not the activation code, or the extCicdController
+1) Open the vsc-ext project and start the nodemon vsc-ext
+2) Set a breakpoint at (vsc-ext) getLocalServerCwd
+3) Run the script (cicd) "ng:serve:dev:reload:true" or "ng:serve:dev:reload:false"
+4) In this project debug using "debug cicd"
+5) Should hit breakpoint at getLocalServerCwd in function project
+
+For the extension:
+To debug the actual extension debug from the promatrix run the "debug extension"
+This will allow you to debug the activation code, and the extCicdController,
+but not the WebView.
+1) In extCicdController.ts use: from 'project-control' instead of '../../../NgResources/project-control'
+2) In extCicdController.ts use: from 'ngx-modelling' instead of '../../../NgResources/ngx-modelling'
+3) In the cicd project, Run the script "Ext:Build:All"
+4) In the promatrix folder, debug using "debug extension"
+set breakpoint at: extention.ts
+  setTimeout(() => {
+    WebPanel.createOrShow(context.extensionPath);
+  }, 1000);

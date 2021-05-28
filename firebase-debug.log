@@ -1,0 +1,84 @@
+[debug] [2021-03-27T14:04:01.309Z] ----------------------------------------------------------------------
+[debug] [2021-03-27T14:04:01.311Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\David\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug --project ngx-studio-phone
+[debug] [2021-03-27T14:04:01.312Z] CLI Version:   8.4.3
+[debug] [2021-03-27T14:04:01.312Z] Platform:      win32
+[debug] [2021-03-27T14:04:01.312Z] Node Version:  v14.15.4
+[debug] [2021-03-27T14:04:01.313Z] Time:          Sat Mar 27 2021 10:04:01 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-03-27T14:04:01.313Z] ----------------------------------------------------------------------
+[debug] [2021-03-27T14:04:01.313Z] 
+[debug] [2021-03-27T14:04:01.319Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-27T14:04:01.321Z] > authorizing via signed-in user
+[debug] [2021-03-27T14:04:01.321Z] [iam] checking project ngx-studio-phone for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2021-03-27T14:04:01.324Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ngx-studio-phone:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2021-03-27T14:04:01.595Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 27 Mar 2021 14:04:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=165","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-27T14:04:01.600Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/ngx-studio-phone/serviceAccounts/ngx-studio-phone@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-03-27T14:04:01.794Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 27 Mar 2021 14:04:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-27T14:04:01.801Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ngx-studio-phone  
+ 
+[debug] [2021-03-27T14:04:02.013Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 27 Mar 2021 14:04:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'ngx-studio-phone'...
+[info] 
+[info] i  deploying storage, functions, hosting 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script. 
+[debug] [2021-03-27T14:04:07.371Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/ngx-studio-phone  
+ 
+[debug] [2021-03-27T14:04:07.584Z] <<< HTTP RESPONSE 404 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 27 Mar 2021 14:04:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-27T14:04:07.587Z] <<< HTTP RESPONSE BODY {"error":{"code":404,"message":"Could not find Application \"ngx-studio-phone\".","status":"NOT_FOUND"}}
+[info] 
+
+There was an issue deploying your functions. Verify that your project has a Google App Engine instance setup at https://console.cloud.google.com/appengine and try again. If this issue persists, please contact support.
+[error] 
+[error] Error: HTTP Error: 404, Could not find Application "ngx-studio-phone".
+[debug] [2021-03-27T14:04:07.603Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 404,
+      "message": "Could not find Application \"ngx-studio-phone\".",
+      "status": "NOT_FOUND"
+    }
+  },
+  "response": {
+    "statusCode": 404,
+    "body": {
+      "error": {
+        "code": 404,
+        "message": "Could not find Application \"ngx-studio-phone\".",
+        "status": "NOT_FOUND"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Sat, 27 Mar 2021 14:04:10 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "appengine.googleapis.com",
+        "port": 443,
+        "hostname": "appengine.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1/apps/ngx-studio-phone",
+        "path": "/v1/apps/ngx-studio-phone",
+        "href": "https://appengine.googleapis.com/v1/apps/ngx-studio-phone"
+      },
+      "method": "GET"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "promatrix",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "features": {
+      "tags": []
+    },
+    "services": {
+      "tags": []
+    },
+    "utilities": {
+      "tags": []
+    },
+    "testing": {
+      "tags": []
+    },
+    "vscext": {
+      "tags": []
+    },
+    "essentials": {
+      "tags": []
+    },
+    "cicd": {
+      "tags": []
+    },
+    "cicd-e2e": {
+      "tags": [],
+      "implicitDependencies": ["cicd"]
+    },
+    "dotnet": {
+      "tags": []
+    },
+    "dotnet-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dotnet"]
+    }
+  }
+}

@@ -1,0 +1,124 @@
+<view-fader [isViewVisible]="isViewVisible">
+
+  <mat-tab-group mat-align-tabs="center" color="primary" dynamicHeight [selectedIndex]="selectedIndex"
+    (selectedIndexChange)="onChangeTab($event)">
+
+    <mat-tab *ngIf="ac.settingsAvailable" label="State & Action">
+      <div class="flex-container">
+        <div class="flex-item app-text-primary">
+          <div class="development-action-title" style="padding-top: 15px;">Action Recordings</div>
+          <div class="development-feature-text">
+            <div>
+              <button mat-fab (click)="onClickSave()">Save</button>&nbsp;
+              <button mat-fab (click)="onClickLoad()">Load</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab *ngIf="ac.settingsAvailable" label="Events">
+      <div class="flex-container">
+        <div class="flex-item app-text-primary">
+          <div class="development-exceptions-title" style="padding-top: 15px;">Generate & Log Events</div>
+          <div class="development-exceptions-text">
+            <button style="margin-left: 5px; " mat-fab (click)="onClickThrowException()">Throw</button>
+            <mat-form-field style="margin-left: 20px; ">
+              <input matInput [spellcheck]="false" style="width: 200px; font-size: 18px; "
+                type="text" placeholder="Enter Exception" [(ngModel)]="el.eventProperties.exception">
+              </mat-form-field>
+            <br /><br />
+            <button style="margin-left: 5px; " mat-fab (click)="onClickLogEntry()">Enter</button>
+            <mat-form-field style="margin-left: 20px; ">
+            <input matInput [spellcheck]="false" style="width: 200px; font-size: 18px; " type="text"
+              placeholder="Enter Message" [(ngModel)]="el.eventProperties.message">
+            </mat-form-field>              
+            <mat-radio-group style="padding-left: 50px;" name="messageType" [(ngModel)]="el.eventProperties.entryType">
+              <mat-radio-button name="messageType" [value]="1"></mat-radio-button>
+              <div
+                style="display:inline-block; vertical-align: middle; margin-top: 5px; margin-left: 2px; font-family: px-neuropol; color: rgba(255, 87, 34, 1);">
+                Error</div>
+              <mat-radio-button name="messageType" [value]="2" style="margin-left: 20px; "></mat-radio-button>
+              <div
+                style="display:inline-block; vertical-align: middle; margin-top: 5px; margin-left: 2px; font-family: px-neuropol; color: rgba(255, 87, 34, 1);">
+                Warning</div>
+              <mat-radio-button name="messageType" [value]="4" style="margin-left: 20px; "></mat-radio-button>
+              <div
+                style="display:inline-block; vertical-align: middle; margin-top: 5px; margin-left: 2px; font-family: px-neuropol; color: rgba(255, 87, 34, 1);">
+                Information</div>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <div class="flex-item app-text-primary">
+          <div class="development-exceptions-title" style="padding-top: 15px;">Application Event List</div>
+          <div class="development-event-list">
+            <table style="color: #ff5722; font-family: Neuropol;">
+              <tr>
+                <td style="width: 300px; padding-left: 20px; ">Type</td>
+                <td style="width: 300px; padding-left: 0; ">Date</td>
+                <td style="width: 300px; padding-left: 0; ">Time</td>
+              </tr>
+            </table>
+            <mat-accordion multi="true">
+              <mat-expansion-panel *ngFor="let event of el.eventLogEntries; " style="background-color: whitesmoke; ">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <table style="color: #ff5722; font-family: Neuropol; width: 100%; ">
+                      <tr>
+                        <td style="width: 300px; ">
+                          <mat-icon [style.color]="getEventTypeColor(event.entryType)" class="toolbar-icon-button">
+                            {{getIconName(event.entryType)}}</mat-icon>
+                        </td>
+                        <td style="width: 300px; ">
+                          {{
+event.timeGenerated.getMonth() + 1
+                          }}/{{event.timeGenerated.getDate()}}/{{event.timeGenerated.getYear()}}
+                        </td>
+                        <td style="width: 300px; ">{{event.timeGenerated.toLocaleTimeString()}}</td>
+                      </tr>
+                    </table>
+
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div style="text-align: left; ">
+                  Entry Type: {{getEventTypeText(event.entryType)}}
+                  <br />
+                  <div *ngFor="let s of event.replacementStrings; let index = index; ">
+                    <div *ngIf="index > 0">{{s}}</div>
+                    <br />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab *ngIf="ac.settingsAvailable" label="Metrics">
+      <div class="flex-container">
+        <div class="flex-item app-text-primary">
+          <div class="development-exceptions-title" style="padding-top: 15px;">Performance by Reaponse Time</div>
+          <table class="analytics-feature-title">
+            <tr>
+              <td style="width: 40%; padding-left: 30px;">Get App Settings</td>
+              <td style="width: 40%; text-align: right; ">Average Time :</td>
+              <td style="width: 10%; font-family: Arial; ">{{ac.analyticsData.averageResponseTime}}ms</td>
+              <td style="width: 10%; text-align: right; padding-right: 5px; "><button mat-mini-fab color="accent"
+                  [disabled]="ac.analyticsData.performances.length === 0"
+                  (click)="onClickClearResponseTime()">Clear</button></td>
+            </tr>
+          </table>
+          <mat-card style="margin-top: 10px; " *ngFor="let performance of ac.analyticsData.performances">
+            {{performance.dateString}}&nbsp;&nbsp;&nbsp;{{performance.timeString}}&nbsp;&nbsp;&nbsp;{{performance.responseTime}}ms
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</view-fader>

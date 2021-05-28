@@ -1,0 +1,65 @@
+$map-controls-width: 300px;
+
+.textAreaNgModel {
+}
+
+.map-controls {
+  min-width: $map-controls-width;
+  max-width: $map-controls-width;
+}
+
+.map-view {
+  width: calc(100% - #{$map-controls-width});
+  background-color: rgba(232, 232, 232, 1)
+}
+
+// should match with mobileApis.component.ts::mediaQueryBreak
+@media (max-width: 1280px) {
+  .map-view {
+    width: 100%;
+    background-color: rgba(232, 232, 232, 1)
+  }
+}
+
+.s2t-text {
+  margin-top: 20px;
+  width: 315px;
+  margin-left: 10px;
+}
+
+.mat-button-toggle-group-appearance-standard {
+  border: none;
+}
+
+.mat-button-toggle {
+  background-color: white;
+  color: mat-color($custom-accent);
+  border-color: mat-color($custom-accent);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.mat-button-toggle-checked {
+  background-color: mat-color($custom-accent);
+  color: white;
+}
+
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  background-color: mat-color($custom-accent);
+  color: white;
+}
+
+.mobile-apis-feature-selected {
+  cursor: none;
+  background-color: white;
+}
+
+.mobile-apis-feature-selected:hover {
+  cursor: default;
+  color: mat-color($custom-accent);
+  background-color: transparent;
+}
+
+.mobile-apis-feature-not-selected {
+  cursor: pointer;
+}

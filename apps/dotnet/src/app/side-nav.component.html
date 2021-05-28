@@ -1,0 +1,75 @@
+<mat-drawer-container class="app-sidenav-container" style="position: fixed; overflow: hidden; ">
+
+  <mat-drawer #drawer class="app-side-nav" [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+    <mat-toolbar color="primary">
+      <div style="font-family: px-neuropol; font-size: 32px; text-align: center; width: 100%; ">
+        {{getVsCurrentConfiguration()}}</div>
+      <mat-icon style="display: none;"  *ngIf="getCameraImage() === 'camera_empty'" id="camera_empty" class="toolbar-icon-button"></mat-icon>
+      <mat-icon *ngIf="getCameraImage() === 'camera_alt'" id="camera_alt" class="toolbar-icon-button" (click)="onClickSnapshot();">camera_alt</mat-icon>
+      <mat-icon *ngIf="getCameraImage() === 'camera'" id="camera" class="toolbar-icon-button" >camera</mat-icon>
+
+      <div *ngIf="getCameraShowing()" style="font-size: small;">
+        <span>{{ getCurrentSnaphot() }}</span>
+        <span> of </span>
+        <span id="totalSnapshots">{{ getTotalSnapshots() }}</span>
+      </div>
+    </mat-toolbar>
+
+    <mat-tab-group style="padding-top: 20px;" mat-align-tabs="center" color="primary" dynamicHeight [selectedIndex]="0">
+
+      <mat-tab label="{{getFeatureLabel()}}">
+        <mat-list class="app-side-listgroup" role="list">
+          <div *ngFor="let feature of router.config">
+            <div *ngIf="feature.data && (ac.appSettings.debug === true || !feature.data.debugOnly || testing === 'true')">
+              <mat-list-item>
+                <view-fader [isViewVisible]="feature.data.show" (click)="animateTo(feature)" class="app-side-listitem"
+                  [ngClass]="{'app-side-selected-item': selectedFeature === feature.path }">{{ feature.data.title }}
+                </view-fader>
+              </mat-list-item>
+            </div>
+          </div>
+
+        </mat-list>
+      </mat-tab>
+
+      <mat-tab *ngIf="ac.appSettings.debug || testing" label="Action">
+        <br />
+        <div style="text-align: center; ">
+          <i class="fa fa-volume-up fa-2x" style="color: cornflowerblue; float:left; margin-left: 20px;"></i>
+          <div class="btn-group" style="margin-right: 20px; height: 65px;">
+            <button mat-fab color="accent" (click)="toggleRecord()" [disabled]="ac.ngAction.isDispatching()"
+              style="top: -2px;">{{recordingStatus()}}</button>
+            <button mat-fab color="accent" (click)="ac.ngAction.clearQueue()"
+              [disabled]="ac.ngAction.isRecording() || ac.ngAction.isDispatching()"
+              style="top: -2px; left: 5px;">Clear</button>
+            <button mat-fab color="accent"
+              [disabled]="ac.ngAction.isRecording() || ac.ngAction.isDispatching() || ac.ngAction.getLatestIndex() === -1"
+              style="top: -2px; left: 10px;" (click)="onClickPlayback()">Play</button>
+          </div>
+        </div>
+        <mat-list class="app-side-listgroup" role="list" style="margin-top: 0px; ">
+          <div *ngFor="let action of ac.ngAction.actionsQueue; let index = index; ">
+            <div>
+              <mat-list-item>
+                <view-fader [isViewVisible]="true" class="app-side-listitem" (click)="ac.ngAction.singleAction(index)"
+                  [ngClass]="{'app-side-selected-item': ac.ngAction.getLatestIndex() === index }">{{ action.name }}
+                </view-fader>
+              </mat-list-item>
+            </div>
+          </div>
+
+        </mat-list>
+
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-drawer>
+
+  <promatrix-app-toolbar (toggleSidenav)="drawer.toggle()"></promatrix-app-toolbar>
+
+
+  <div class="side-nav-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

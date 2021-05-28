@@ -1,0 +1,40 @@
+
+<style>
+  .example-h2 {
+    margin: 10px;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  .example-margin {
+    margin: 0 10px;
+  }
+</style>
+
+
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <div>
+    <div style="display: inline-block; ">Transfered: {{data.bytesTransfered}} kb</div>
+    <div style="display: inline-block; float: right; ">Total: {{data.totalBytes}} kb</div>
+    <mat-progress-bar class="example-margin" style="margin-top: 15px; left: -10px;"
+                      [color]="'blue'"
+                      [mode]="'determinate'"
+                      [value]="data.percentComplete">
+    </mat-progress-bar>
+    <br />
+    <label>
+      {{data.description}}
+    </label>
+    <br />
+  </div>
+</div>
+
+<mat-dialog-actions style="float: right; ">
+  <button class="mat-flat-button" color="primary" style="background: rgba(0, 74, 123, 1); color: white; " (click)="cancel(data)">Cancel</button>
+</mat-dialog-actions>

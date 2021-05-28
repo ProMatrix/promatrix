@@ -1,0 +1,95 @@
+
+<speech-to-text [isVisible]="showSpeechToText"></speech-to-text>
+<text-to-speech [isVisible]="showTextToSpeech"></text-to-speech>
+
+<view-fader [isViewVisible]="isViewVisible">
+  <mat-tab-group mat-align-tabs="center" color="primary" dynamicHeight [selectedIndex]="selectedIndex" (selectedIndexChange)="onChangeTab($event)">
+    <mat-tab label="Map">
+      <div class="flex-container">
+
+        <div class="flex-item map-controls">
+
+          <mat-form-field>
+            <input matInput placeholder="Address" [(ngModel)]="gm.address">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Zip Code" [(ngModel)]="gm.zipcode">
+          </mat-form-field>
+          <br />
+
+          <div style="float: left; margin-top: 10px; ">&nbsp;&nbsp;Latitude</div>
+          <div style="float: right; margin-top: 10px; ">Longitude&nbsp;&nbsp;</div>
+          <br />
+          <div style="margin-top: 10px; ">
+            <div *ngIf="gm.latitude !== 0" style="float: left; ">&nbsp;&nbsp;{{gm.latitude}}</div>
+            <div *ngIf="gm.latitude === 0" style="float: left; ">&nbsp;&nbsp;00.00000</div>
+
+            <div *ngIf="gm.longitude !== 0" style="float: right; ">{{gm.longitude}}&nbsp;&nbsp;&nbsp;</div>
+            <div *ngIf="gm.longitude === 0" style="float: right; ">00.00000&nbsp;&nbsp;&nbsp;</div>
+            <br /><br />
+            <button mat-flat-button color="primary" (click)="gm.findMe()" style="float: left; " title="Find Me on Google Maps">Find Me</button>
+            <button mat-flat-button color="primary" (click)="gm.findAddress()" [disabled]="shouldFindByAddressBeDisabled()" style="float: right; " title="Find Address on Google Maps">Find Address</button>
+          </div>
+        </div>
+
+        <google-maps class="flex-item map-view" heightPercent="100" widthPercent="100" style="border-radius: 10px; display: block; " [style.width.px]="getMapWidth()" [style.height.px]="getMapHeight()"></google-maps>
+
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Speech">
+      <div class="flex-container">
+        <div class="flex-item">
+
+          <span>
+            <mat-icon color="primary" class="toolbar-icon-button" (click)="onClickTextToSpeech()" style="float:left; cursor: pointer; margin-bottom: 15px; font-size: 40px; " title="Convert Text to Speech">volume_up</mat-icon>
+            <mat-icon color="primary" class="toolbar-icon-button" (click)="onClickSpeechToText()" style="float:right; cursor: pointer; margin-bottom: 15px; font-size: 40px; " title="Convert Speech to Text">mic</mat-icon>
+          </span>
+
+          <div class="send-sms" style="height: 170px; margin-left: 10px; ">
+            <br /><br />
+            <mat-form-field appearance="fill">
+              <mat-label>Enter Message Here</mat-label>
+              <textarea matInput style="font-size: 110%; " *ngIf="showTextArea" [spellcheck]="mobileApisState.spellCheckingEnabled" class="form-control textAreaNgModel" [rows]="getRowCount()" (change)="onChangeTextMessage($event.target.value)" [ngModel]="mobileApisState.textMessage"></textarea>
+            </mat-form-field>
+
+            <br />
+            <mat-icon *ngIf="!mobileApisState.spellCheckingEnabled" color="primary" class="toolbar-icon-button" (click)="onClickSpellCheck(true)" style="float:left; cursor: pointer; margin-top: 0; font-size: 40px; height: 40px; " title="Spell Checking: Off">check_circle_outline</mat-icon>
+            <mat-icon *ngIf="mobileApisState.spellCheckingEnabled" color="primary" class="toolbar-icon-button" (click)="onClickSpellCheck(false)" style="float:left; cursor: pointer; margin-top: 0; font-size: 40px; height: 40px; " title="Spell Checking: On">check_circle</mat-icon>
+
+            <mat-icon *ngIf="!mobileApisState.clearTextMessage" color="primary" class="toolbar-icon-button" (click)="onClickClearTextMessage()" style="float:right; cursor: pointer; margin-top: 0; font-size: 40px; " title="Clear Text">clear</mat-icon>
+            <mat-icon *ngIf="mobileApisState.clearTextMessage" color="primary" class="toolbar-icon-button" style="float:right; cursor: default; margin-top: 0; font-size: 40px; " title="Clearing Text">block</mat-icon>
+
+            <div class="app-text-primary" style="float: left; margin-left: 5px; margin-top: 7px; font-size: 16px; ">
+              Spell Checking: <span style="font-weight: bold; ">{{ mobileApisState.spellCheckingEnabled ? "On" : "Off" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="SMS">
+      <div class="flex-container">
+        <div class="flex-item">
+          <div class="send-sms" style="width: 285px; margin-left: 10px; ">
+            <br /><br />
+
+            <mat-form-field appearance="fill">
+              <mat-label>* Enter Message Here</mat-label>
+              <textarea matInput *ngIf="showTextArea" [spellcheck]="mobileApisState.spellCheckingEnabled" class="form-control textAreaNgModel" [rows]="getRowCount()" (keyup)="onChangeTextMessage($event.target.value)" [ngModel]="mobileApisState.textMessage"></textarea>
+            </mat-form-field>
+
+            <br />
+            <mat-form-field>
+              <input min="0" max="9999999999" (keyup)="onKeyUp($event.target.value)" (keydown)="onKeyDown($event)" type="number" matInput placeholder="* Cell Number" [ngModel]="mobileNumber">
+            </mat-form-field>
+            <br /><br />
+            <button mat-flat-button color="primary" [disabled]="shouldSendBeDisabled()" (click)="onClickSend()" style="float: right; ">Send</button>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</view-fader>

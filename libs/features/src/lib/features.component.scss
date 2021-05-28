@@ -1,0 +1,13 @@
+.mat-card {
+  color: mat-color($custom-primary);
+}
+
+.mat-expansion-panel-header-title {
+  color: mat-color($custom-accent);
+  font-family: px-neuropol;
+  font-size: 20px;
+}
+
+.mat-expansion-panel-body {
+  font-size: larger;
+}

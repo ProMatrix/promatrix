@@ -1,0 +1,73 @@
+<view-fader [isViewVisible]="isViewVisible">
+  <br />
+
+  <div class="flex-container">
+    <div class="flex-item settings-feature-text app-text-primary" style="height: 325px; ">
+      <div>
+        <div class="settings-feature-title">{{getAppTitle()}}{{ac.appSettings.buildVersion}}</div>
+      </div>
+      <table>
+        <tr *ngIf="ac.appSettings.aspNetCoreVersion">
+          <td style="width: 170px; text-align: right; color: orangered;">.Net Core:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; color: orangered;">{{ac.appSettings.aspNetCoreVersion}}</td>
+        </tr>
+        <tr>
+          <td style="width: 170px; text-align: right; color: orangered;">Angular:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; color: orangered;">{{ac.appSettings.apiVersions.angular}}</td>
+        </tr>
+
+        <tr *ngIf="ac.project === 'desktop'">
+          <td style="width: 170px; text-align: right; color: orangered;">Angular Fire:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; color: orangered;">{{ac.appSettings.apiVersions.angularFire}}</td>
+        </tr>
+
+        <tr *ngIf="ac.project === 'desktop'">
+          <td style="width: 170px; text-align: right; color: orangered;">Firebase:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; color: orangered;">{{ac.appSettings.apiVersions.firebase}}</td>
+        </tr>
+
+        <tr>
+          <td style="width: 170px; text-align: right; color: orangered;">TypeScript:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; color: orangered;">{{ac.appSettings.apiVersions.typeScript}}</td>
+        </tr>
+        <tr>
+          <td style="width: 170px; text-align: right; color: orangered;">NodeJs:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; color: orangered;">{{ac.appSettings.apiVersions.nodeJs}}</td>
+        </tr>
+        <tr>
+          <td style="width: 170px; text-align: right; color: orangered;">V8 Engine:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; color: orangered;">{{ac.appSettings.apiVersions.v8Engine}}</td>
+        </tr>
+        <tr>
+          <td style="width: 170px; text-align: right; ">RxJs:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; ">{{ac.appSettings.apiVersions.rxJs}}</td>
+        </tr>
+        <tr>
+          <td style="width: 170px; text-align: right; ">Moment:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 20px; ">{{ac.appSettings.apiVersions.moment}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="flex-item settings-feature-text  app-text-primary" style="height: 160px; ">
+      <div class="settings-feature-title">Settings</div>
+      <div style="margin-left: 100px; ">
+        <div>Debug={{ac.appSettings.debug}}</div>
+        <div>Splash Time={{ac.appSettings.splashTime}}ms</div>
+        <div>Online Status={{ac.isOnline}}</div>
+      </div>
+    </div>
+
+  </div>
+
+</view-fader>
+

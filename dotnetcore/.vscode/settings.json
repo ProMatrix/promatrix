@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/7a6ea1ec-0c97-4354-8908-7dcb39e6b24c/resourceGroups/RC-1/providers/Microsoft.Web/sites/ngx-studio",
+    "appService.deploySubpath": "bin\\Debug\\net5.0\\publish"
+}

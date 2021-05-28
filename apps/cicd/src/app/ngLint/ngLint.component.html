@@ -1,0 +1,67 @@
+<div class="flex-container">
+
+    <div class="flex-item">
+        <table style="width: 300px; ">
+            <tr>
+                <td style="width: 33%; ">
+                    <button [disabled]="!ss.lintCompleted" (click)="onClickLint()" mat-mini-fab color="accent"
+                        title="Start Linting Project(s)">Start</button>
+                </td>
+                <td style="width: 33%; cursor:default; padding-left: 50px; ">Project</td>
+                <td title="Lint Project" style="width: 33%; cursor:default; padding-left: 55px; ">Lint</td>
+            </tr>
+        </table>
+
+        <table style="width: 300px; ">
+            <tr *ngFor="let project of angularProjects;">
+                <table style="width: 300px; ">
+                    <tr>
+                        <td style="width: 5%; padding-left: 10px; ">
+                            <mat-icon color="primary" (click)="onClickToggleStatus(project)"
+                                style="float:left; cursor: pointer; margin-top: 8px; font-size: 20px; "
+                                title="Show/Hide the Status">info_outline</mat-icon>
+                        </td>
+                        <td color="accent" style="width: 35%; text-align: center; cursor:default; ">
+                            <view-blinker [blinking]="project.ngLintProcess.processing"
+                                [visibleWhenNotBlinking]="true">
+                                <div *ngIf="!project.ngLintProcess.completed && !project.ngLintProcess.processing" >{{project.name}}</div>
+                                <div *ngIf="!project.ngLintProcess.completed && project.ngLintProcess.processing" style="color:white;" >{{project.name}}</div>
+                                <div *ngIf="project.ngLintProcess.completed && project.ngLintProcess.succeeded" style="color:lime;">{{project.name}}</div>
+                                <div *ngIf="project.ngLintProcess.completed && !project.ngLintProcess.succeeded" style="color:red;">{{project.name}}</div>
+                            </view-blinker>
+                        </td>
+                        <td style="width: 15%; text-align: center;">
+                            <mat-checkbox title="Enable Linting Project: {{project.name}}" [disabled]="project.ngLintProcess.npmScripts.length === 0 || !ss.lintCompleted" [(ngModel)]="project.lintEnabled"
+                                (change)="saveChanges();"></mat-checkbox>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <view-fader [isViewVisible]="project.ngLintProcess.showStatus">
+                                <textarea [disabled]="true" *ngIf="project.ngLintProcess.showStatus" spellcheck="false"
+                                    class="extension-bkgnd"
+                                    style="width: 100%; height: 150px; margin-top: 10px; border-radius: 10px; font-size: 12px; ">{{project.ngLintProcess.statusMessage}}</textarea>
+                            </view-fader>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="1" style="width: 30%; ">{{project.ngLintProcess.processInfoType}}</td>
+                        <td colspan="2" style="width: 70%; text-align: right; ">{{project.ngLintProcess.processInfoMessage}}</td>
+                    </tr>
+                </table>
+
+            </tr>
+            <tr>
+                <td colspan="4" style="height: 40px; vertical-align: top ;">
+                    <div *ngIf="ss.lintCompleted">&nbsp;</div>
+                    <mat-progress-bar *ngIf="!ss.lintCompleted" mode="indeterminate"></mat-progress-bar>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <table style="width: 100%">
+    <tr>
+      <td style="width: 5%; text-align: left; ">
+        <mat-icon class="toolbar-icon-button" (click)="onClickToggleSidenav();">menu</mat-icon>
+      </td>
+      <td style="width: 5%; text-align: left; ">
+        <mat-icon class="toolbar-icon" title="Application Status is: {{getOnlineStatusText()}}">{{getOnlineStatusIconName()}}</mat-icon>
+      </td>
+      <td style="text-align: center; width: 80%; ">
+        <div style="font-family: px-neuropol; font-size: 32px; ">ANGULAR.NET&nbsp;&nbsp;STUDIO</div>
+      </td>
+      <td style="width: 5%; text-align: right;">
+        <mat-icon class="toolbar-icon-button" (click)="onClickHelp()">help</mat-icon>
+      </td>
+      <td style="width: 5%; text-align: right;">
+        <mat-icon [matMenuTriggerFor]="menu" class="toolbar-icon-button">more_vert</mat-icon>
+      </td>
+    </tr>
+  </table>
+  <mat-menu #menu="matMenu">
+    <button *ngIf="!auth.loggedIn" mat-menu-item (click)="openLogonDialog()">Logon</button>
+    <button *ngIf="auth.loggedIn" mat-menu-item (click)="signOut()">Logoff</button>    
+    <button mat-menu-item (click)="openAboutDialog()">About</button>
+  </mat-menu>
+</mat-toolbar>

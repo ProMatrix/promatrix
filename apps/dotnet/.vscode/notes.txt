@@ -1,0 +1,2 @@
+To debug extension.ts debug from this project folder (studio.app) run the "debug extension"
+Notes are located in the cicd folder

@@ -1,0 +1,23 @@
+<div mat-dialog-content (keyup)="returnKey($event)">
+  <div class="flex-item app-text-primary">
+    <div class="splash-feature-title" style="font-family: px-neuropol; ">Authentication</div>
+    <br />
+
+    <div class="splash-feature-text">
+      <mat-form-field style="width: 225px; ">
+        <input type="text" matInput placeholder="* Email" [(ngModel)]="auth.creds.email">
+      </mat-form-field>
+      <br>
+      <mat-form-field style="width: 225px; ">
+        <input type="password" matInput placeholder="* Password" [(ngModel)]="auth.creds.password">
+      </mat-form-field>
+      <br>
+
+      <div *ngIf="!auth.loggedIn">
+        <button style="float: right; " mat-fab class="button" (click)="signIn()">Login</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>

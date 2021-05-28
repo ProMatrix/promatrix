@@ -1,0 +1,72 @@
+<div class="flex-container">
+
+    <div class="flex-item">
+        <table style="width: 400px; ">
+            <tr>
+                <td style="width: 20%; ">
+                    <button [disabled]="!ss.publishCompleted" (click)="onClickPublish()" mat-mini-fab color="accent"
+                        title="Start Publishing Project(s)">Start</button>
+                </td>
+                <td style="width: 20%; cursor:default; padding-left: 70px; ">Project</td>
+                <td title="Publish Project" style="width: 20%; cursor:default; padding-left: 15px; ">Publish</td>
+                <td style="width: 20%; cursor:default; padding-left: 45px; ">Prod</td>
+            </tr>
+        </table>
+
+        <table style="width: 400px; ">
+            <tr *ngFor="let project of angularProjects;">
+                <table style="width: 400px; ">
+                    <tr>
+                        <td style="width: 20%; padding-left: 10px; ">
+                            <mat-icon color="primary" (click)="onClickToggleStatus(project)"
+                                style="float:left; cursor: pointer; margin-top: 8px; font-size: 20px; "
+                                title="Show/Hide the Status">info_outline</mat-icon>
+                        </td>
+                        <td color="accent" style="width: 20%; text-align: center; cursor:default; ">
+                            <view-blinker [blinking]="project.ngPublishProcess.processing"
+                                [visibleWhenNotBlinking]="true">
+                                <div *ngIf="!project.ngPublishProcess.completed && !project.ngPublishProcess.processing" >{{project.name}}</div>
+                                <div *ngIf="!project.ngPublishProcess.completed && project.ngPublishProcess.processing" style="color:white;" >{{project.name}}</div>
+                                <div *ngIf="project.ngPublishProcess.completed && project.ngPublishProcess.succeeded" style="color:lime;">{{project.name}}</div>
+                                <div *ngIf="project.ngPublishProcess.completed && !project.ngPublishProcess.succeeded" style="color:red;">{{project.name}}</div>
+                            </view-blinker>
+                        </td>
+                        <td style="width: 20%; text-align: center;">
+                            <mat-checkbox title="Enable Publishing Project: {{project.name}}" [disabled]="project.ngPublishProcess.npmScripts.length === 0 || !ss.publishCompleted" [(ngModel)]="project.publishEnabled"
+                                (change)="saveChanges();"></mat-checkbox>
+                        </td>
+                        <td style="width: 20%; cursor:default; padding-left: 45px; ">
+                            <mat-icon title="Launch Application in Prod Mode" *ngIf="project.launchProdScript" style="font-size: 20px; cursor: pointer; " color="primary" (click)="runScript(project, project.launchProdScript)">language</mat-icon>
+                            <mat-icon *ngIf="!project.launchProdScript" style="font-size: 20px; cursor: pointer; visibility: hidden; " >language</mat-icon>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <view-fader [isViewVisible]="project.ngPublishProcess.showStatus">
+                                <textarea [disabled]="true" *ngIf="project.ngPublishProcess.showStatus" spellcheck="false"
+                                    class="extension-bkgnd"
+                                    style="width: 100%; height: 150px; margin-top: 10px; border-radius: 10px; font-size: 12px; ">{{project.ngPublishProcess.statusMessage}}</textarea>
+                            </view-fader>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="1" style="width: 30%; ">{{project.ngPublishProcess.processInfoType}}</td>
+                        <td colspan="3" style="width: 70%; text-align: right; ">{{project.ngPublishProcess.processInfoMessage}}</td>
+                    </tr>
+                </table>
+
+            </tr>
+            <tr>
+                <td colspan="4" style="height: 40px; vertical-align: top ;">
+                    <div *ngIf="ss.publishCompleted">&nbsp;</div>
+                    <mat-progress-bar *ngIf="!ss.publishCompleted" mode="indeterminate"></mat-progress-bar>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

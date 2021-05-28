@@ -1,0 +1,39 @@
+.snapshot-select {
+    max-height: 45px;
+    max-width: 45px;
+
+}
+
+button.snapshot-button {
+    color: white;
+    height: auto;
+    max-width: 45px;
+    min-width: 45px;
+    margin-right: 1vw;
+    font-size: 12px;
+    line-height: 18px;
+}
+  
+.devops-logo {
+    margin-left: calc((100vw / 2) - 50px);
+    height: 100px;
+}
+
+.app-versions {
+    color: #ffd180;
+    font-family: Arial;
+    margin-left: calc((100vw / 2) - 150px);
+    width: 300px;
+}
+
+.summary-content {
+    color: #ffd180;
+    font-size: 14px;
+    margin-left: calc((100vw / 2) - 100px);
+    font-family: Arial;
+}
+
+.cicd-feature-text {
+    color: #ffd180;
+  }
+

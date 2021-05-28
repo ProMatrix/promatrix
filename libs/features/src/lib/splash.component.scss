@@ -1,0 +1,33 @@
+.splash-feature-title {
+  color: mat-color($custom-accent);
+  background-color: #dfdfdf;
+  width: 375px;
+  height: 20px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 25px;
+  font-size: 24px;
+}
+
+.splash-feature-text {
+  color: mat-color($custom-accent);
+  background-color: #dfdfdf;
+  width: 375px;
+  height: 200px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 25px;
+  font-size: 18px;
+}
+
+.splash-feature-image {
+  margin-top: 100px;
+  width: 100%;
+  height: 100%;
+}
+
+.expand-visible {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}

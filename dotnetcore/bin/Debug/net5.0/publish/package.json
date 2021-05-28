@@ -1,0 +1,9 @@
+{
+    "name": "dotnetcore",
+    "scripts": {
+      "dotnet:run": "dotnet run",
+      "dotnet:publish": "dotnet publish",
+      "dotnet:deploy": "powershell .\\publish.ps1"
+    },
+    "private": true
+  }

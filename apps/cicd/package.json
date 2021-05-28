@@ -1,0 +1,21 @@
+{
+  "name": "cicd-scripts",
+  "version": "0.00.00",
+  "scripts": {
+    "ngLint": "cd ../../ && ng lint cicd",
+    "pxE2e": "cd ../../ && node ./dist/libs/testing/src/lib/e2eTesting cicd 7776 apps",
+    "ng:serve-dev-reload-true": "cd ../ && ng serve cicd --port=4201",
+    "ng:serve-dev-reload-false": "cd ../ && ng serve --live-reload=false cicd --port=4201",
+    "ngBuildDev": "cd ../../ && ng build cicd && node dist/libs/utilities/src/lib/updateTimeStamps cicd",
+    "ngBuildProd": "cd ../../ && ng build cicd --prod --output-path prod/cicd && node dist/libs/utilities/src/lib/updateTimeStamps cicd", 
+    "ngTest": "cd ../../ && ng test cicd --findRelatedTests=.spec.ts",
+    "manual-snapshot-golden": "cd ../../ && node dist/libs/utilities/src/lib/snapshotCli cicd 7776 golden apps",
+    "envCwd-snapshot-golden": "cd ../../ && node dist/libs/utilities/src/lib/snapshotCli cicd 7776 golden",
+    "pxArt-dev": "cd ../../ && ng test cicd --findRelatedTests=cicd.regression.dev.test",
+    "pxArt-prod": "cd ../../ && ng test cicd --findRelatedTests=cicd.regression.prod.test",
+    "updateVersions": "cd ../../ && node ./dist/libs/utilities/src/lib/updateVersions.js",
+    "updateTimeStamps": "cd ../../ && node dist/libs/utilities/src/lib/updateTimeStamps cicd",
+    "serve-launch-dist-uut": "cd ../../ && node ./node_modules/kill-port 7776 && start chrome --app=http://localhost:7776 && node ./node_modules/http-server/bin/http-server -p 7776 -c-1 dist/apps/cicd",
+    "build-webView": "cd ../ && ng build cicd --prod --output-hashing none --output-path prod/cicd"
+  }
+}

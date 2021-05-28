@@ -1,0 +1,1 @@
+Keep this file in the assets folder in order to assure that the folder is created in the dist folder

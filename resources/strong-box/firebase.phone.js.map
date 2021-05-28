@@ -1,0 +1,1 @@
+{"version":3,"file":"firebase.phone.js","sourceRoot":"","sources":["firebase.phone.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,QAAQ,GAAG;IACpB,MAAM,EAAE,yCAAyC;IACjD,UAAU,EAAE,oCAAoC;IAChD,WAAW,EAAE,2CAA2C;IACxD,SAAS,EAAE,oBAAoB;IAC/B,aAAa,EAAE,gCAAgC;IAC/C,iBAAiB,EAAE,cAAc;IACjC,KAAK,EAAE,2CAA2C;IAClD,aAAa,EAAE,cAAc;CAChC,CAAA"}

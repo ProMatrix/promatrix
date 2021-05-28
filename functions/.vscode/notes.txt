@@ -1,0 +1,19 @@
+Project Notes:
+The functions folder contains a NodeJS server
+ngFireRemoteServer: publish to the firebase host used for the desktop project
+
+ngFireRemoteServer is used for the desktop project:
+1) It assists with downloading from Firebase Storage
+2) It gets the server time with the time zone offset
+
+Development Workflow:
+1) Get each function working using the project-control debugger
+2) Then add it to extCicdServer
+
+importing from project-control:
+use import '../../../../NgResources/project-control' directly
+or import 'project-control' when deploying to Firebase
+
+Nodemon is installed globally
+There is a debug launcher called remote nodemon used to build, watch for changes and launch the extCicdServer
+Or, you can use Build:Watch script and the local server debug laucher

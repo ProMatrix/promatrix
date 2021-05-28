@@ -1,0 +1,17 @@
+{
+    "ResourceGroup":
+    {
+        "Name": "RC-1",
+        "Location": "East US"
+    },
+    "WebSite":
+    {
+        "Name": "ngx-studio",
+        "HostingPlan":
+        {
+            "Name": "ASP-RC1-8ea0",
+            "Tier": "free"
+        },
+        "Package": "C:\\ProMatrix.2\\angular.studio.11.00\\studio.app\\dotnetcore\\wwwroot.zip"
+    }
+}

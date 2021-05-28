@@ -1,0 +1,25 @@
+{
+  "name": "dotnet-scripts",
+  "version": "0.00.00",
+  "scripts": {
+    "ngLint": "cd ../../ && ng lint dotnet",
+    "pxE2e": "cd ../../ && node ./dist/libs/testing/src/lib/e2eTesting dotnet 7779 apps",
+    "ngServeDev": "cd ../../ && ng serve dotnet",
+    "ngBuildDev": "cd ../../ && ng build dotnet && node dist/libs/utilities/src/lib/updateTimeStamps dotnet",
+    "ngBuildProd": "cd ../../ && ng build dotnet --prod --output-path prod/dotnet && node dist/libs/utilities/src/lib/updateTimeStamps dotnet",
+    "ngTest": "cd ../../ && ng test dotnet --findRelatedTests=.spec.ts",
+    "manual-snapshot-golden": "cd ../../ && node dist/libs/utilities/src/lib/snapshotCli dotnet 7779 golden apps",
+    "envCwd-snapshot-golden": "cd ../../ && node dist/libs/utilities/src/lib/snapshotCli dotnet 7779 golden",
+    "pxArt-dev": "cd ../../ && ng test dotnet --findRelatedTests=dotnet.regression.dev.test",
+    "pxArt-prod": "cd ../../ && ng test dotnet --findRelatedTests=dotnet.regression.prod.test",
+    "updateVersions": "cd ../../ && node ./dist/libs/utilities/src/lib/updateVersions.js",
+    "pxDelete-prod": "del ..\\..\\dotnetcore\\wwwroot\\*.* /Q && del ..\\..\\dotnetcore\\bin\\Debug\\net5.0\\publish\\wwwroot\\*.* /Q",
+    "copy-prod": "cd ../../ && xcopy prod\\dotnet dotnetcore\\wwwroot /y",
+    "publish-dotnet": "cd ../../dotnetcore && dotnet publish && powershell .\\publish.ps1",
+    "updateTimeStamps": "cd ../../ && node dist/libs/utilities/src/lib/updateTimeStamps dotnet",
+    "serve-launch-dist-uut": "cd ../../ && node ./node_modules/kill-port 7779 && start chrome --app=http://localhost:7779?testing=true && node ./node_modules/http-server/bin/http-server -p 7779 -c-1 dist/apps/dotnet",
+    "serve-launch-prod-uut": "cd ../../ && node ./node_modules/kill-port 7779 && start chrome --app=http://localhost:7779?testing=true && node ./node_modules/http-server/bin/http-server -p 7779 -c-1 prod/dotnet",
+    "launch-dotnet-prod": "start chrome --app=https://ngx-studio.azurewebsites.net/ --disk-cache-dir=null",  
+    "host-dotnet": "cd ../../dotnetcore && dotnet run"
+  }
+}

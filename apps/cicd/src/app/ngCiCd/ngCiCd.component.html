@@ -1,0 +1,72 @@
+<div *ngIf="initialized" class="flex-container">
+
+    <div class="flex-item">
+        <table style="width: 350px; ">
+            <tr>
+                <td style="width: 25%; ">
+                    <button [disabled]="!ss.ciCdCompleted" (click)="onClickRestart()" mat-fab color="accent"
+                        title="Start or Restart All Processes">Start</button>
+                </td>
+                <td style="width: 25%; ">
+                    <button [disabled]="!ss.ciCdCompleted" (click)="onClickContinue()" mat-fab color="accent"
+                        title="Run All Unchecked Processes">Cont...</button>
+                </td>
+                <td style="width: 25%; cursor:default; padding-left: 5px; ">Process</td>
+                <td title="Completed the CI/CD" style="width: 25%; cursor:default; padding-left: 45px; ">Completed</td>
+            </tr>
+        </table>
+
+        <table style="width: 370px; ">
+            <tr style="height: 34px ">
+                <td  style="width: 33%; ">&nbsp;</td>
+                <td  style="width: 33%; text-align: center;">Lint</td>
+                <td style="width: 33%; text-align: center;">
+                    <mat-checkbox title="Linting Process Completed Successfully" (click)="onClickCheckbox()" [(ngModel)]="ds.lintCompleted"></mat-checkbox>
+                </td>
+            </tr>
+            <tr style="height: 34px ">
+                <td>&nbsp;</td>
+                <td  style="text-align: center;">Build</td>
+                <td style="text-align: center;">
+                    <mat-checkbox title="Building Process Completed Successfully" (click)="onClickCheckbox()" [(ngModel)]="ds.buildCompleted"></mat-checkbox>
+                </td>
+            </tr>
+            <tr style="height: 34px ">
+                <td>&nbsp;</td>
+                <td  style="text-align: center;">Unit Tests</td>
+                <td style="text-align: center;">
+                    <mat-checkbox title="Unit Testing Process Completed Successfully" (click)="onClickCheckbox()" [(ngModel)]="ds.uTestsCompleted"></mat-checkbox>
+                </td>
+            </tr>
+            <tr style="height: 34px ">
+                <td>&nbsp;</td>
+                <td  style="text-align: center;">E2E Tests</td>
+                <td style="text-align: center;">
+                    <mat-checkbox title="End-to-End Testing Process Completed Successfully" (click)="onClickCheckbox()" [(ngModel)]="ds.eTestsCompleted"></mat-checkbox>
+                </td>
+            </tr>
+            <tr style="height: 34px ">
+                <td>&nbsp;</td>
+                <td  style="text-align: center;">ART Tests</td>
+                <td style="text-align: center;">
+                    <mat-checkbox title="Automated Regression Testing Process Completed Successfully" (click)="onClickCheckbox()" [(ngModel)]="ds.aTestsCompleted"></mat-checkbox>
+                </td>
+            </tr>
+            <tr style="height: 34px ">
+                <td>&nbsp;</td>
+                <td  style="text-align: center;">Publish</td>
+                <td style="text-align: center;">
+                    <mat-checkbox title="Publishing Process Completed Successfully" (click)="onClickCheckbox()" [(ngModel)]="ds.publishCompleted"></mat-checkbox>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4" style="height: 40px; vertical-align: top ;">
+                    <div *ngIf="ss.ciCdCompleted">&nbsp;</div>
+                    <mat-progress-bar *ngIf="!ss.ciCdCompleted" mode="indeterminate"></mat-progress-bar>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

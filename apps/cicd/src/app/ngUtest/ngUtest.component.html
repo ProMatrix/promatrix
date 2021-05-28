@@ -1,0 +1,67 @@
+<div class="flex-container">
+
+    <div class="flex-item">
+        <table style="width: 350px; ">
+            <tr>
+                <td style="width: 33%; ">
+                    <button [disabled]="!ss.uTestCompleted" (click)="onClickUtest()" mat-mini-fab color="accent"
+                        title="Start Unit Testing Project(s)">Start</button>
+                </td>
+                <td style="width: 33%; cursor:default; padding-left: 55px; ">Project</td>
+                <td title="Unit Test Project" style="width: 33%; cursor:default; padding-left: 50px; ">Unit Test</td>
+            </tr>
+        </table>
+
+        <table style="width: 350px; ">
+            <tr *ngFor="let project of angularProjects;">
+                <table style="width: 350px; ">
+                    <tr>
+                        <td style="width: 5%; padding-left: 10px; ">
+                            <mat-icon color="primary" (click)="onClickToggleStatus(project)"
+                                style="float:left; cursor: pointer; margin-top: 8px; font-size: 20px; "
+                                title="Show/Hide the Status">info_outline</mat-icon>
+                        </td>
+                        <td color="accent" style="width: 35%; text-align: center; cursor:default; ">
+                            <view-blinker [blinking]="project.ngUtestProcess.processing"
+                                [visibleWhenNotBlinking]="true">
+                                <div *ngIf="!project.ngUtestProcess.completed && !project.ngUtestProcess.processing" >{{project.name}}</div>
+                                <div *ngIf="!project.ngUtestProcess.completed && project.ngUtestProcess.processing" style="color:white;" >{{project.name}}</div>
+                                <div *ngIf="project.ngUtestProcess.completed && project.ngUtestProcess.succeeded" style="color:lime;">{{project.name}}</div>
+                                <div *ngIf="project.ngUtestProcess.completed && !project.ngUtestProcess.succeeded" style="color:red;">{{project.name}}</div>
+                            </view-blinker>
+                        </td>
+                        <td style="width: 15%; text-align: center;">
+                            <mat-checkbox title="Enable Unit Testing Project: {{project.name}}" [disabled]="project.ngUtestProcess.npmScripts.length === 0 || !ss.uTestCompleted" [(ngModel)]="project.uTestEnabled"
+                                (change)="saveChanges();"></mat-checkbox>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <view-fader [isViewVisible]="project.ngUtestProcess.showStatus">
+                                <textarea [disabled]="true" *ngIf="project.ngUtestProcess.showStatus" spellcheck="false"
+                                    class="extension-bkgnd"
+                                    style="width: 100%; height: 150px; margin-top: 10px; border-radius: 10px; font-size: 12px; ">{{project.ngUtestProcess.statusMessage}}</textarea>
+                            </view-fader>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="1" style="width: 30%; ">{{project.ngUtestProcess.processInfoType}}</td>
+                        <td colspan="2" style="width: 70%; text-align: right; ">{{project.ngUtestProcess.processInfoMessage}}</td>
+                    </tr>
+                </table>
+
+            </tr>
+            <tr>
+                <td colspan="4" style="height: 40px; vertical-align: top ;">
+                    <div *ngIf="ss.uTestCompleted">&nbsp;</div>
+                    <mat-progress-bar *ngIf="!ss.uTestCompleted" mode="indeterminate"></mat-progress-bar>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

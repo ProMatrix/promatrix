@@ -1,0 +1,86 @@
+<speech-to-text [isVisible]="showSpeechToText"></speech-to-text>
+<text-to-speech [isVisible]="showTextToSpeech"></text-to-speech>
+
+<view-fader [isViewVisible]="isViewVisible">
+  <div class="flex-container">
+
+    <div class="flex-item">
+      <div class="notification-feature-subtitle">Registration</div>
+
+      <div class="notification-feature-registration">
+        <div class="notification-channel" style="margin: 5px;">
+          <mat-form-field>
+            <input matInput placeholder="* Channel Name" class="registration-controls"
+              [disabled]="xcvr.channelRegistered" [(ngModel)]="xcvr.myChannel.name" [spellcheck]="false" type="text"
+              style="text-transform: uppercase; " />
+          </mat-form-field>
+          <button mat-fab color="accent" *ngIf="!xcvr.channelRegistered" [disabled]="shouldRegistrationBeDisabled()"
+            class="registration-button" (click)="onClickRegister()" title="Register Channel">Register</button>
+          <button mat-fab color="accent" *ngIf="xcvr.channelRegistered" [disabled]="shouldUnregistrationBeDisabled()"
+            class="registration-button" (click)="onClickUnregister()" title="Unregister Channel">Unregister</button>
+          <div style="height: 50px; width: 100%; "></div>
+        </div>
+      </div>
+      <br />
+      <div class="notification-feature-subtitle">Registered Channels</div>
+
+      <div class="notification-feature-registration" style="margin: 5px;">
+        <select [(ngModel)]="xcvr.channelsToUnregister" [disabled]="true" class="registered-channels-list" size="5">
+          <option *ngFor="let channel of xcvr.getOrderedRegisteredChannels()" [value]="channel.name">{{channel.name}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="flex-item">
+      <div class="notification-feature-subtitle">Transceiver</div>
+
+      <div class="notification-feature-transceiver">
+        <div>
+          <div>
+            <mat-icon color="primary" class="toolbar-icon-button" (click)="onClickTextToSpeech()"
+              style="float:left; cursor: pointer; margin-bottom: 15px; font-size: 40px; "
+              title="Convert Text to Speech">volume_up</mat-icon>
+            <div class="app-text-accent" style="margin-left: 60px; margin-top: 15px; display: inline-block; ">Transmit
+              Message(s)</div>
+            <mat-icon color="primary" class="toolbar-icon-button" (click)="onClickSpeechToText()"
+              style="float:right; cursor: pointer; margin-bottom: 15px; font-size: 40px; "
+              title="Convert Speech to Text">mic</mat-icon>
+          </div>
+
+          <textarea *ngIf="showTextArea" [spellcheck]="spellCheck" [rows]="getRowCount()" [(ngModel)]="textToSend"
+            class="text-to-send" type="text"></textarea>
+          <mat-icon *ngIf="!spellCheck" color="primary" class="toolbar-icon-button" (click)="onClickSpellCheck(true)"
+            style="float:left; cursor: pointer; margin-top: 3; font-size: 30px; " title="Spell Checking: Off">
+            check_circle_outline</mat-icon>
+          <mat-icon *ngIf="spellCheck" color="primary" class="toolbar-icon-button" (click)="onClickSpellCheck(false)"
+            style="float:left; cursor: pointer; margin-top: 3; font-size: 30px; " title="Spell Checking: On">
+            check_circle</mat-icon>
+
+          <span class="app-text-primary" style="float: left; margin-left: 5px; margin-top: 10px; ">
+            Spell Checking: <span style="font-weight: bold; ">{{ spellCheck ? "On" : "Off" }}</span>
+          </span>
+          <mat-icon color="primary" class="toolbar-icon-button" (click)="onClickClearText()"
+            style="cursor: pointer; margin-top: 5px; font-size: 30px; margin-left: 40px; " title="Clear Text">clear
+          </mat-icon>
+          <button mat-fab color="accent" [disabled]="shouldSendBeDisabled()" class="send-button"
+            (click)="onClickSendMessage()" title="Transmit Message">Send</button>
+
+          <br /><br />
+          <div class="app-text-accent" style="text-align: center; ">Receiving Subscription(s)</div>
+
+          <select [(ngModel)]="xcvr.myChannel.subscriptions" multiple="multiple" class="registered-channels-list"
+            size="3">
+            <option *ngFor="let channel of getReceivingSubscriptions()" [value]="channel.name">{{channel.name}}</option>
+          </select>
+
+          <br /><br />
+          <div class="app-text-accent" style="text-align: center; ">Received Message(s)</div>
+          <textarea [disabled]="true" [rows]="4" class="text-to-send" type="text">{{xcvr.textReceived}}</textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</view-fader>

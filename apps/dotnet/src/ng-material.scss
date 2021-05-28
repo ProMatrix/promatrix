@@ -1,0 +1,39 @@
+.mat-select-value, .mat-option-text {
+  color: mat-color($custom-accent);
+  font-family: px-neuropol;
+}
+
+.build-type .mat-form-field-wrapper {
+  width: 110px;
+}
+
+.send-sms .mat-form-field-wrapper {
+  width: 300px;
+}
+
+.notification-channel .mat-form-field-wrapper {
+  width: 275px;
+}
+
+.map-controls .mat-form-field-wrapper {
+  width: 290px;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  margin-top: 20px;
+}
+
+#pro-help-dialog {
+  padding-top: 0 !important;
+  padding-bottom: 25px !important;
+  font-family: Arial;
+  font-size: 16px;
+}

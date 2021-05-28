@@ -1,0 +1,41 @@
+<h1 style="text-align: center; " mat-dialog-title>Angular Studio {{ac.appSettings.buildVersion}}</h1>
+
+<div mat-dialog-content>
+  <div style="font-family: Arial; font-size: 16px; ">
+    <b>Note: </b>Following is a list of the application versions
+    <br /><br />
+  </div>
+  <table style="font-family: Arial; margin-left: 100px;">
+    <tr>
+      <td style="text-align: right; color: orangered;">Angular:</td>
+      <td>&nbsp;</td>
+      <td style="color: orangered;">{{ac.appSettings.apiVersions.angular}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; color: orangered;">TypeScript:</td>
+      <td>&nbsp;</td>
+      <td style="color: orangered;">{{ac.appSettings.apiVersions.typeScript}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; color: orangered;">NodeJs:</td>
+      <td>&nbsp;</td>
+      <td style="color: orangered;">{{ac.appSettings.apiVersions.nodeJs}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; color: orangered;">V8 Engine:</td>
+      <td>&nbsp;</td>
+      <td style="color: orangered;">{{ac.appSettings.apiVersions.v8Engine}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; ">RxJs:</td>
+      <td>&nbsp;</td>
+      <td>{{ac.appSettings.apiVersions.rxJs}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; ">Moment:</td>
+      <td>&nbsp;</td>
+      <td>{{ac.appSettings.apiVersions.moment}}</td>
+    </tr>
+  </table>
+
+</div>

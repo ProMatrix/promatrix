@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@promatrix/features": ["libs/features/src/index.ts"],
+      "@promatrix/services": ["libs/services/src/index.ts"],
+      "@promatrix/utilities": ["libs/utilities/src/index.ts"],
+      "@promatrix/testing": ["libs/testing/src/index.ts"],
+      "@promatrix/vscext": ["libs/vscext/src/index.ts"],
+      "@promatrix/essentials": ["libs/essentials/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

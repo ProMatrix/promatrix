@@ -1,0 +1,1 @@
+{"name":"desktop.landing.page","url":"http://localhost:7777","dist":"../studio.app/dist/desktop","action":"snapshot.golden","testMatch":["<rootDir>/src/take.golden.page.snapshot.ts"],"snapshotPath":"studio.app/cicd/src/assets/snapshot.golden","enabled":true}

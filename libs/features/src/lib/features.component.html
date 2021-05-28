@@ -1,0 +1,387 @@
+<view-fader [isViewVisible]="isViewVisible">
+  <mat-card style="margin-top: 10px; text-align: center; font-family: px-neuropol; font-size: 24px; ">Features upon Features</mat-card>
+  <mat-accordion multi="true">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Overview
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      This document details the features of the Angular Studio used in the course titled "Angular and ASP.Net Core Integration". By using the techniques described in the course, you are already further ahead of where you would be by starting from scratch. In fact, in terms of a projects lifecycle, the techniques used in the AngularNetCore Starter App will put you months ahead of schedule.
+      <br /><br />
+      Unlike many developer, I spend much time analyzing the workflow and looking for shortcuts to developing an application. The key is automation. Some upfront time, researching and analyzing the workflow, will save you months of development time later, with all your projects. And that is what I can share with you. I've spent months, not only looking for shortcuts to make the development quicker, but also to enhance the performance, and make the application easier to maintain.
+      <br /><br />
+      As a Microsoft developer, you have become used to not having the need to drop down to the command line to perform an operation. By automating the development process, you will become less fatigued, and be able to spend your attention doing development.
+      <br /><br />
+      The target audience for the course, is the ASP.Net Core Developer that would like to use Angular, as the front-end technology.
+      <br /><br />
+      <table>
+        <tr>
+          <td style="width: 200px; text-align: right; font-family: px-neuropol; color: orangered; ">ASP.Net Core:</td>
+          <td style="width: 20px; ">&nbsp;</td>
+          <td style="width: 200px; font-family: px-neuropol; color: orangered; ">{{ac.appSettings.aspNetCoreVersion}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right; font-family: px-neuropol; color: orangered; ">Angular:</td>
+          <td>&nbsp;</td>
+          <td style="font-family: px-neuropol; color: orangered; ">{{ac.appSettings.apiVersions.angular}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right; font-family: px-neuropol; color: orangered; ">TypeScript:</td>
+          <td>&nbsp;</td>
+          <td style="font-family: px-neuropol; color: orangered; ">{{ac.appSettings.apiVersions.typeScript}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right; color: darkgreen">NodeJs:</td>
+          <td>&nbsp;</td>
+          <td style="color: darkgreen;">{{ac.appSettings.apiVersions.nodeJs}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right; color: darkgreen;">V8 Engine:</td>
+          <td>&nbsp;</td>
+          <td style="color: darkgreen;">{{ac.appSettings.apiVersions.v8Engine}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right; color: darkgreen;">RxJs:</td>
+          <td>&nbsp;</td>
+          <td style="color: darkgreen;">{{ac.appSettings.apiVersions.rxJs}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right; color: darkgreen;">Moment:</td>
+          <td>&nbsp;</td>
+          <td style="color: darkgreen;">{{ac.appSettings.apiVersions.moment}}</td>
+        </tr>
+      </table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          New Features
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      The Angular Studio has many new features! This version embraces Angular and Firebase, which is the main difference from previous versions.
+      <br /><br />
+      You can also configure your Angular projects build types, build for production, and PWA support directly from within the Angular Studio Application or by using the Angular Studio Browser Extension.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Prerequisites and References
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      In order to use the Angular Studio you will need to download and install NodeJS. By installing NodeJS you will automatically install NPM, the Node Package Manage. Here are some links:
+      <br />
+      <a href="https://nodejs.org/en" target="_blank">NodeJs</a>
+      <br />
+      <a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm" target="_blank">How to Install</a>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Compatibility
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      The most compatible web applications will perform with all modern browsers. To ensure that, the feature-set supports all browsers that support ECMAScript 5 (ES5).
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Project Template
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      When creating an ASP.Net Core project, you are given 2 choices. The project template I have chosen is the ASP.Net Core Web Application with the .Net Core. This project template has the benefit of running on Linux, macOS as well as Windows using .Net Core. Then you have 2 more choses for what type of middleware, WebAPI or MVC. Since we have no need for MVC we will chose the WebAPI.
+      <br /><br />
+      By the way, since many Microsoft developer are coming from a background of MVC, you should know that Angular and MVC are mutually exclusive. Soon you will understand the full benefits of allowing the Angular framework to handle the UI. Not only is it faster and easier to maintain, but it also embraces the web technologies. Sorry to say it, but you are going to have to understand web technologies to be a good, modern web developer.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          3rd Party Libraries
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      There are some 3rd party libraries already integrated into the Angular Studio, but easy to remove if there is no need for them. Also, there is no need for SignalR, or jQuery or any other dependency libraries. Each library is self-contained.
+      Following is a list of integrated libraries:
+      <br /><br />
+      Angular Material
+      <br />
+      rxjs
+      <br />
+      moment
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Abstracting Debug from Release
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      As an ASP.Net Core developer, you may not understand the significant difference between running the application in the Debug mode, verses the Release mode, in terms of JavaScript performance. Well, guess what? There is a big difference! Once you realize that the sooner you will be productive.
+      <br /><br />
+      Visual Studio and ASP.Net Core make it easy to determine the development configuration mode that you are in and allow you to configure the outputting results according to the configuration mode. This is all handled in the Startup.cs file.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Using NodeJS to do the Heavy Lifting
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      I would have never guessed that I was going to need NodeJS and Gulp to be an efficient application developer. Now I truly can't live without those 2 technologies. In case you didn't know, NPM is a repository for storing Node packages and comes with NodeJS. And Gulp is a JavaScript task runner that lets you automate tasks.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Automation to Streamline the Workflow
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      By using Gulp and the Task Runner Explorer, we can bind to these events:
+      <br /><br />
+      1) Before Build
+      <br />
+      2) After Build
+      <br />
+      3) Clean
+      <br />
+      4) Project Opens
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Creating a Release Build
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      The Angular Studio has many features that can make your application perform faster and make it easier to maintain. Creating a Release (Production) build does many things in one process. Some are performed by the Angular-CLI, and others are performed by a build hook. Following is a list of all the benefits of creating a release bundle using the routines provided by the AngularNetCore Starter App Release Build.
+      <br /><br />
+      &nbsp;&nbsp;1) Separates the framework from the application
+      <br />
+      &nbsp;&nbsp;2) Concatenate and bundle the framework with the 3rd party libraries
+      <br />
+      &nbsp;&nbsp;3) Minify the framework bundle
+      <br />
+      &nbsp;&nbsp;4) Embedding the images, fonts, and icons into the html
+      <br />
+      &nbsp;&nbsp;5) Squash the html and css into the components
+      <br />
+      &nbsp;&nbsp;6) Concatenate and bundle the application
+      <br />
+      &nbsp;&nbsp;7) Minify the application bundle
+      <br />
+      &nbsp;&nbsp;8) Enabling the production mode
+      <br />
+      &nbsp;&nbsp;9) Creating an application manifest
+      <br />
+      10) Adding Cache-Busting logic
+      <br />
+      11) Bumping up the application version number
+      <br />
+      12) Adding the Service Worker logic for offline performance
+      <br />
+      14) Updating the index.html with new versions
+      <br />
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Creating the Application Manifest
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      I've given a lot of attention to the web technologies that enable applications to work off-line. This is like having a web app that performs like a desktop app. The Angular Studio can perform most function while being complete disconnected from the Internet. This is currently implemented in the release build process and can be completely automated.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Debugging NodeJS Tasks
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Developing and debugging NodeJS tasks can be an interesting challenge. Most developers will struggle with this for months.<br /><br />
+      When I create gulp tasks I want to be able to:<br />
+      1)	Set breakpoints<br />
+      2)	Step into my Node task<br />
+      3)	Do searches for references<br />
+      4)	Go to definitions<br />
+      5)	Have full Intellisense<br />
+      6)	Build with TypeScript classes<br /><br />
+      The ProjectDebug Visual Studio project allow you to do all of these things while debugging your Node tasks.
+      Just start the project (ProjectDebug), then set a break point in the tasklist.js files execute method.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Automatically Versioning the Application
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      By using NodeJS, it possible bump up the version number. This can be automated by binding it a build event. During the course I will demonstrate the binding, and the technique for incrementing the version number using NodeJS.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Exception Handling
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      ASP.Net Core applications need a different method for returning exception data back to the Angular service. The Angular Studio implements a technique to return useful exception information back to the client. ASP .Net Core has methods for returning exception Information, that can used for showing the exception information.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Passing Parameters to the Server
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      ASP.Net Core applications use a different method for abstracting the application parameter. These type of parameter, such as connection string, used to be stored in the web.config. Now they are stored in the appsettings.json. This is also a good place to store the application version number.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Saving and Displaying Performance Analytics
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      The Angular Studio displays performance analytics obtained from Performance Markers that are inserted into the code. During the course we are going to use Chrome Dev Tools to display and analyze timing information.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Saving the Navigation to the Last Feature
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      This may not seem like a big deal, but sometimes it is best to pick-up where you left off using an application. So by saving the last feature that was used before exiting, it's possible to return to that feature when the application is launched again. I don't intend on explaining this feature in the course, but you can see by examining the source that the technology used is Local Storage.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Publishing to Server Solution
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      The Angular Studio comes with a separate Solution for publishing to the server. The idea is that it is not necessary to publish unbundled script files to the server. This alternate Solution only includes the folders that are necessary for the server to deliver the application. With this Solution, the time it takes to publish to the server is reduced to 5 percent.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Full-Features and Mobile Versions
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      By having different Application Build Configurations, it is possible to create a full-feature version, and a mobile version of the application. By using the same codebase, you will have the ability to reuse code for 2 different Angular projects. But it doesn't stop there! You can have as many Angular builds as necessary in one Visual Studio project. This is a great way to break up a large-scale Angular project into small projects.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Real-Time Messaging
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Many developers struggle with the concept of real-time data, and how to accomplish this feat with a web application. Here is a scenario.
+      <br /><br />
+      Let's say that you need to be notified when an event happens within the system. Maybe another user, within the system, makes a change to the database.
+      <br /><br />
+      The Angular Studio comes with a solution to that problem, and is demonstrated in the Notification feature. This feature allows you to send messages to other users. The users that want to receive your messages will simply subscribe to your channel. Then, they will receive the notifications in real-time. What this means is that it is not necessary to refresh the browser to receive the latest notification.
+      <br /><br />
+      The important point to make is that the notification is not limited to text. The notification can be simple text, an object, or a complex collection of objects.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Voice Activated Commands
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Now, here is the feature that puts it all together. With the aid of some of the most modern web technologies, it is possible to activate features of the application, by simply using your voice. This opens up so many, many, new possibilities.
+      <br /><br />
+      The Notification component, has implemented voice activated commands. What this means is just by using your voice, it is possible to emulate or replace mouse, and keyboard commands. Look Mom! No hands!
+      <br /><br />
+      Hopefully you will understand the implications, and possibilities. In one of my "follow-up" courses, I plan to demonstrate a fully functional voice activates help system.
+      <br /><br />
+      Imagine this: Computer... tell me about...
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Already Ready
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      The Angular Studio comes with the scaffolding for you to immediately begin implementing your own custom feature. The feature is titled "Already Ready".
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Integrated Help System
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      The Angular Studio comes with the scaffolding for composing a Help System for each feature of your application.
+      It is integrated with the Routing Module(s) and can greatly simplify the process of adding a Help System to your applications.
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Mobile Apis
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Speech to Text, Text to Speech, Sending SMS
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</view-fader>

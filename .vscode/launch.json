@@ -1,0 +1,198 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "action-firebase",
+      "url": "http://localhost:4200?un=user@angularstudio.com&pw=passw00d!&actions=actionsQueue003",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "action-dotnet",
+      "url": "http://localhost:4200?un=user@angularstudio.com&pw=passw00d!&actions=actionsQueue003",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug cicd",
+      "url": "http://localhost:4201?testing=true",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug:4200",
+      "url": "http://localhost:4200?testing=true",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "testing:4200",
+      "url": "http://localhost:4200?testing=true&un=user@angularstudio.com&pw=passw00d!",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug phone",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug dotnet",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug & devtools",
+      "url": "http://localhost:4200",
+      "runtimeArgs": ["--auto-open-devtools-for-tabs", "--disk-cache-dir=null"],
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "vscext",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
+      "stopOnEntry": false
+    },
+    {
+      "name": "Debug Jest",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "Debug art:phone",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "phone.regression.dev.test"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "updateVersions",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/libs/utilities/src/lib/updateVersions.ts",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "updateTimeStamps",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/libs/utilities/src/lib/updateTimeStamps.ts",
+      "args": ["desktop"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "golden-snapshots-desktop",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/libs/utilities/src/lib/snapshotsCli.ts",
+      "args": ["desktop", "actionsQueue003", "7778", "golden", "apps"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "testing-snapshots-desktop",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/libs/utilities/src/lib/snapshotsCli.ts",
+      "args": ["desktop", "actionsQueue003", "7778", "testing", "apps"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "art:desktop:apps",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "desktop.regression.apps.test"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "art:desktop:prod",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "desktop.regression.prod.test"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "vsc-ext:client",
+      "url": "http://localhost:4201?testing=true",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
+    {
+      "name": "vsc-ext:server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/libs/vscext/src/lib/extCicdStart.ts",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    }
+  ],
+  "compounds": [
+    {
+      "name": "vsc-ext:chrome",
+      "configurations": ["vsc-ext:server", "vsc-ext:client"]
+    },
+    {
+      "name": "vsc-ext:vscode",
+      "configurations": ["vsc-ext:server", "vscext"]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+.registration-button {
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+  top: 45px;
+  width: 80px !important;
+  height: 80px !important;
+}
+
+.send-button {
+  float: right;
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.registration-controls {
+  min-width: $map-controls-width;
+  max-width: $map-controls-width;
+}
+
+.notification-feature-subtitle {
+  color: mat-color($custom-accent);
+  background-color: #dfdfdf;
+  font-family: px-neuropol;
+  font-size: 24px;
+  padding-top: 20px;
+  width: 400px;
+  height: 50px;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.text-to-send {
+  color: mat-color($custom-primary);
+  padding: 10px;
+  width: 355px;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.registered-channels-list {
+  color: mat-color($custom-primary);
+  padding: 10px;
+  width: 380px;
+  border-radius: 20px;
+  font-size: 20px;
+  overflow-y: hidden;
+}
+
+.notification-feature-registration {
+  color: mat-color($custom-primary);
+  background-color: #dfdfdf;
+  padding: 10px;
+  width: 380px;
+  margin-top: 5px;
+  text-align: justify;
+  border-radius: 25px;
+  font-size: 20px;
+}
+
+.notification-feature-transceiver {
+  color: mat-color($custom-primary);
+  background-color: #dfdfdf;
+  padding: 10px;
+  width: 380px;
+  margin-top: 5px;
+  text-align: justify;
+  border-radius: 25px;
+  font-size: 20px;
+}

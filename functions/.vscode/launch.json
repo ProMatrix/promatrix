@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "local firebase",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\ngFireRemoteStart.ts",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ],
+            "preLaunchTask": "npm: build"
+
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "nodemon firebase",
+            "program": "${workspaceFolder}\\src\\ngFireRemoteStart.ts",
+            "preLaunchTask": {
+                "type": "typescript",
+                "tsconfig": "tsconfig.json",
+                "option": "watch",
+                "problemMatcher": [
+                    "$tsc-watch"
+                ],
+                "group": "build"
+            },
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ],
+            "runtimeExecutable": "nodemon",
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}
